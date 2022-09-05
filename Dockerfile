@@ -64,3 +64,9 @@ FROM base AS prod
 
 RUN POSTAL_SKIP_CONFIG_CHECK=1 RAILS_GROUPS=assets bundle exec rake assets:precompile
 RUN touch /opt/postal/app/public/assets/.prebuilt
+
+RUN postal web-server
+RUN postal smtp-server
+RUN postal worker
+RUN postal cron
+RUN postal requeuer
